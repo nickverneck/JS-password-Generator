@@ -71,13 +71,28 @@ function userInputs()
   return passChars; 
 }
 
+function generatePassword(pass,length)
+{
+  // Lets loop through the entire array pass[] adding random picked values to another array called finalpass[]
+  // once the length is satisfied we stop the loop, transform the final pass array into a string and return the final value
+  var finalPass = [];
+
+
+  for (var i = length-1; i > -1 ;i--)
+  {
+    var j = Math.floor(Math.random()* pass.length);
+    finalPass[i]= pass[j];
+    }
+  finalPass = finalPass.join("");
+  return finalPass;
+}
 
 function writePassword() {
   //lets get an array with all possible characters that the user have chosen
   // and generate a password out of this array, after that is completed we show to the user in the website
   var passChars = userInputs();
   
-  var password = generatePassword(passChars);
+  var password = generatePassword(passChars,passLength);
  
   var passwordText = document.querySelector("#password");
 
